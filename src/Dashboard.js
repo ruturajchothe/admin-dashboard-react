@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import NotificationCard from './NotificationCard';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+
 const Dashboard = () => {
     let cardArray = [
         {
