@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
+import { PostUserData } from "./api";
 import  UserContext  from "./userContext";
-
+// import PostUserData from './api';
 
 const CreateUser = () => {
 
@@ -8,15 +9,16 @@ const CreateUser = () => {
   let [userName, setUserName] = useState("");
   let [email, setEmail] = useState("");
   let userData = {
-    userName, email
+    name: userName, email
   }
 
   return (
     <>
-    <form onSubmit={(e)=>{
+    <form onSubmit={async (e)=>{
       e.preventDefault();
-      {users.setUserList([...users.userList, userData])}
-      alert(`User: ${userData.userName} is added!`)
+      // {users.setUserList([...users.userList, userData])}
+      await PostUserData(userData);
+      alert(`User: ${userData.name} is added!`)
       setUserName("");
       setEmail("")
     }}>

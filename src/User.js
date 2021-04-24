@@ -1,8 +1,17 @@
-import React, {useContext} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import UserContext from "./userContext"
+import UserContext from "./userContext";
+import { GetUserData } from "./api";
 const User = () => {
-  let users = useContext(UserContext);
+  // let users = useContext(UserContext);
+  let [userdata, setUserData] = useState([]);
+  
+  useEffect(async () => {
+    let users = await GetUserData();
+    setUserData(...userdata, users.data);
+  }, []);
+
+
   return (
     <>
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -49,17 +58,17 @@ const User = () => {
               </tfoot>
               <tbody>
                 {
-                  users.userList.map((user) => {
+                  userdata.map((user) => {
                     return <tr>
                     <td>
-                      <Link to="/Profile/:id" exact="true">{user.userName}</Link>
+                      <Link to="/Profile/:id" exact="true">{user.name}</Link>
                     </td>
                     <td>{user.email}</td>
                     {/* <td>C 137</td>
                     <td>61</td>
                     <td>2011/04/25</td>
                     <td>$320,800</td> */}
-                    <td><Link to={`/EditUser/${user.userName}`} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                    <td><Link to={`/EditUser/${user.name}`} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
           >
             <i class="fas fa-download fa-sm text-white-50"></i> Edit
           </Link></td>
