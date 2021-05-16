@@ -58,8 +58,8 @@ const User = () => {
               </tfoot>
               <tbody>
                 {
-                  userdata.map((user) => {
-                    return <tr>
+                  userdata.map((user, index) => {
+                    return <tr key = {index}>
                     <td>
                       <Link to="/Profile/:id" exact="true">{user.name}</Link>
                     </td>

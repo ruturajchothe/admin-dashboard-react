@@ -70,7 +70,7 @@ const Sidebar = () => {
                 </div>
             </li>
 
-            <li class="nav-item">
+            {/* <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
@@ -80,7 +80,7 @@ const Sidebar = () => {
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-            </li>
+            </li> */}
 
             <hr class="sidebar-divider d-none d-md-block"/>
 
